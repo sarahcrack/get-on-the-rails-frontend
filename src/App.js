@@ -1,18 +1,22 @@
-import { BrowserRouter, Routes, Route } from "react-router";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Homepage from "./Pages/Homepage";
 import Resources from "./Pages/Resources";
+import { ChakraProvider, defaultSystem } from "@chakra-ui/react";
 
 function App() {
   return (
-    <BrowserRouter>
-      <div className="App">
+    <ChakraProvider value={defaultSystem}>
+      <BrowserRouter>
         <Routes>
-          <Route exact path="/" element={<Homepage />} />
-          <Route exact path="/resources" element={<Resources />} />
+          <Route path="/" element={<Homepage />} />
+          <Route path="/resources" element={<Resources />} />
         </Routes>
-      </div>
-    </BrowserRouter>
+      </BrowserRouter>
+    </ChakraProvider>
   );
 }
 
 export default App;
+
+
+// Next time: render card components for each resource in database on resources page
