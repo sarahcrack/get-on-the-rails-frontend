@@ -1,5 +1,7 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
+import { Button, Card } from "@chakra-ui/react";
+
 
 const API_URL = "http://localhost:3000/api/v1/resources"
 
@@ -8,7 +10,7 @@ function getResources() {
 }
 
 function Resources() {
-  const [resources, setResources] = useState(null)
+  const [resources, setResources] = useState([])
 
   useEffect(() => {
     getResources().then((data) => {
@@ -19,9 +21,31 @@ function Resources() {
   return (
     <>
       <p>Hello World 🌍</p>
-      <p>{resources ? JSON.stringify(resources) : "Loading..."}</p>
+
+      {resources.length === 0 ? (
+        <p>Loading...</p>
+      ) : (
+        resources.map((resource) => (
+          <Card.Root key={resource.id} maxW="320px">
+            <Card.Body gap="2">
+              <Card.Title>{resource.title}</Card.Title>
+
+              <Card.Description>
+                {resource.description}
+                {resource.link}
+              </Card.Description>
+            </Card.Body>
+
+            <Card.Footer justifyContent="flex-end" gap="2">
+              <Button variant="outline">View</Button>
+              <Button>Join</Button>
+            </Card.Footer>
+          </Card.Root>
+        ))
+      )}
     </>
   )
 }
+
 
 export default Resources

@@ -19,4 +19,5 @@ function App() {
 export default App;
 
 
-// Next time: render card components for each resource in database on resources page
+// Next time: create routes for individual show pages
+// After that: grid for laying out cards in a nice way
