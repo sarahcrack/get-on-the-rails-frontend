@@ -1,22 +1,22 @@
-import axios from "axios"
-import { useEffect, useState } from "react"
+import axios from "axios";
+import { useEffect, useState } from "react";
 import { Button, Card } from "@chakra-ui/react";
+import { Link } from "react-router";
 
-
-const API_URL = "http://localhost:3000/api/v1/resources"
+const API_URL = "http://localhost:3000/api/v1/resources";
 
 function getResources() {
   return axios.get(API_URL).then((response) => response.data);
 }
 
 function Resources() {
-  const [resources, setResources] = useState([])
+  const [resources, setResources] = useState([]);
 
   useEffect(() => {
     getResources().then((data) => {
-      setResources(data)
-    })
-  }, [])
+      setResources(data);
+    });
+  }, []);
 
   return (
     <>
@@ -37,15 +37,15 @@ function Resources() {
             </Card.Body>
 
             <Card.Footer justifyContent="flex-end" gap="2">
-              <Button variant="outline">View</Button>
-              <Button>Join</Button>
+              <Link to={`/resources/${resource.id}`}>
+                <Button variant="outline">View</Button>
+              </Link>
             </Card.Footer>
           </Card.Root>
         ))
       )}
     </>
-  )
+  );
 }
 
-
-export default Resources
+export default Resources;

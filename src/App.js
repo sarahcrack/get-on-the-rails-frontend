@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Homepage from "./Pages/Homepage";
 import Resources from "./Pages/Resources";
+import Show from "./Pages/Show";
 import { ChakraProvider, defaultSystem } from "@chakra-ui/react";
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/resources" element={<Resources />} />
+           <Route path="/resources/:id" element={<Show />} />
         </Routes>
       </BrowserRouter>
     </ChakraProvider>
@@ -19,4 +21,4 @@ function App() {
 export default App;
 
 
-// Next time: render card components for each resource in database on resources page
+// Next time: make resources page look nicer (CSS)
