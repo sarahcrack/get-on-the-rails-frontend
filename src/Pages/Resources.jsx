@@ -1,7 +1,9 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Button, Card } from "@chakra-ui/react";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
+import { Stack } from "@chakra-ui/react"
+
 
 const API_URL = "http://localhost:3000/api/v1/resources";
 
@@ -20,29 +22,29 @@ function Resources() {
 
   return (
     <>
-      <p>Hello World 🌍</p>
-
       {resources.length === 0 ? (
         <p>Loading...</p>
       ) : (
-        resources.map((resource) => (
-          <Card.Root key={resource.id} maxW="320px">
-            <Card.Body gap="2">
-              <Card.Title>{resource.title}</Card.Title>
+        <Stack gap="4" direction="row" justify="center" wrap="wrap">
+          {resources.map((resource) => (
+            <Card.Root key={resource.id} width="500px">
+              <Card.Body gap="2">
+                <Card.Title>{resource.title}</Card.Title>
 
-              <Card.Description>
-                {resource.description}
-                {resource.link}
-              </Card.Description>
-            </Card.Body>
+                <Card.Description>
+                  {resource.description}
+                  {resource.link}
+                </Card.Description>
+              </Card.Body>
 
-            <Card.Footer justifyContent="flex-end" gap="2">
-              <Link to={`/resources/${resource.id}`}>
-                <Button variant="outline">View</Button>
-              </Link>
-            </Card.Footer>
-          </Card.Root>
-        ))
+              <Card.Footer justifyContent="flex-end" gap="2">
+                <Link to={`/resources/${resource.id}`}>
+                  <Button variant="outline">View</Button>
+                </Link>
+              </Card.Footer>
+            </Card.Root>
+          ))}
+        </Stack>
       )}
     </>
   );
