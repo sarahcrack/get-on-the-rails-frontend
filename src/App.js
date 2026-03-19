@@ -3,11 +3,13 @@ import Homepage from "./Pages/Homepage";
 import Resources from "./Pages/Resources";
 import Show from "./Pages/Show";
 import { ChakraProvider, defaultSystem } from "@chakra-ui/react";
+import Navbar from "./components/ui/Navbar";
 
 function App() {
   return (
     <ChakraProvider value={defaultSystem}>
       <BrowserRouter>
+        <Navbar />
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/resources" element={<Resources />} />

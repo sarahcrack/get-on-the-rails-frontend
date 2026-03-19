@@ -2,8 +2,8 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Button, Card } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
-import { Stack } from "@chakra-ui/react"
-
+import { Stack } from "@chakra-ui/react";
+import { Heading } from "@chakra-ui/react";
 
 const API_URL = "http://localhost:3000/api/v1/resources";
 
@@ -22,6 +22,9 @@ function Resources() {
 
   return (
     <>
+      <Heading size="6xl" mb="5">
+        Resources
+      </Heading>
       {resources.length === 0 ? (
         <p>Loading...</p>
       ) : (
